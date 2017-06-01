@@ -9,5 +9,16 @@ namespace DartTraining
 {
 	public class MainViewModel : ViewModelBase
 	{
+		private ViewModelBase context;
+
+		public ViewModelBase Context
+		{
+			get { return this.context; }
+			set
+			{
+				this.context = value; 
+				OnPropertyChanged(nameof(this.Context));
+			}
+		}
 	}
 }
