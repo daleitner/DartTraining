@@ -8,7 +8,7 @@ using ApprovalTests.Wpf;
 using DartTraining.Menu;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ApprovalTestsProject.Menu
+namespace DartTrainingTests.Menu
 {
 	[TestClass]
 	[UseReporter(typeof(DiffReporter), typeof(ClipboardReporter))]
