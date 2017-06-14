@@ -11,7 +11,7 @@
 		<Label Content="Login" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,80,10,10"></Label>
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 			<Label x:Name="label" FontSize="20" Content="Name:" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-			<TextBox FontSize="20" x:Name="textBox" HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top" Width="120" Text="{Binding Path=NewUser}"/>
+			<TextBox FontSize="20" x:Name="textBox" HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top" Width="120" Text="{Binding Path=NewUser, UpdateSourceTrigger=PropertyChanged}"/>
 			<Button FontSize="20" x:Name="button" Command="{Binding Path=LoginCommand}" Content="Login" HorizontalAlignment="Center" Margin="40,3,0,0" VerticalAlignment="Top" Width="100"/>
 		</StackPanel>
 		<ListBox HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="100" ItemsSource="{Binding Path=Users}" SelectedItem="{Binding Path=SelectedUser}" Margin="-110,180,0,0"></ListBox>

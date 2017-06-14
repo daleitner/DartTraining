@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartTraining", "DartTrainin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DartTrainingTests", "DartTrainingTests\DartTrainingTests.csproj", "{71E25A7A-F245-4393-BC4A-A52A4D92A194}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBInterface", "DBInterface\DBInterface.csproj", "{764B6836-AE1D-405C-848B-ECD8C9DC6785}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{71E25A7A-F245-4393-BC4A-A52A4D92A194}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71E25A7A-F245-4393-BC4A-A52A4D92A194}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71E25A7A-F245-4393-BC4A-A52A4D92A194}.Release|Any CPU.Build.0 = Release|Any CPU
+		{764B6836-AE1D-405C-848B-ECD8C9DC6785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{764B6836-AE1D-405C-848B-ECD8C9DC6785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{764B6836-AE1D-405C-848B-ECD8C9DC6785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{764B6836-AE1D-405C-848B-ECD8C9DC6785}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
