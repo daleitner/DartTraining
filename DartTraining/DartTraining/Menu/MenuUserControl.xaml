@@ -5,8 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DartTraining.Menu"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
-            
+		<Label Content="Dart Training" FontWeight="Bold" HorizontalAlignment="Center" FontSize="40" VerticalAlignment="Top" Margin="2"></Label>
+		<StackPanel Orientation="Vertical" Width="400" Margin="0,120,0,0">
+			<Button Height="60" FontSize="20" Margin="20" Content="Trainingsspiel" Command="{Binding Path=StartGameCommand}"></Button>
+			<Button Height="60" FontSize="20" Margin="20" Content="Trainingsliga" Command="{Binding Path=StartLigaCommand}"></Button>
+			<Button Height="60" FontSize="20" Margin="20" Content="Highlights" Command="{Binding Path=HighlightCommand}"></Button>
+			<Button Height="60" FontSize="20" Margin="20" Content="Beenden" Command="{Binding Path=CloseCommand}"></Button>
+		</StackPanel>
     </Grid>
 </UserControl>

@@ -1,0 +1,1 @@
+﻿Context = DartTraining.Menu.MenuViewModel

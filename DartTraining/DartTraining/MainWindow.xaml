@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DartTraining"
         mc:Ignorable="d"
-        Title="Dart Training" Height="350" Width="525">
+        Title="Dart Training" Height="350" Width="525" WindowState="Maximized" Background="{StaticResource ResourceKey=DefaultBackground}">
     <Grid>
         <ContentPresenter Content="{Binding Path=Context}"></ContentPresenter>
     </Grid>
