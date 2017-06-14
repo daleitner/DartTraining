@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using DartTraining.Factory;
+using DartTraining.Switcher;
 
 namespace DartTraining
 {
@@ -11,12 +12,12 @@ namespace DartTraining
 		public MainWindow()
 		{
 			InitializeComponent();
-			var factory = new ViewModelFactory();
-			factory.CloseEvent += Factory_CloseEvent;
-			this.DataContext = factory.CreateMainViewModel();
+			var contextSwitcher = new ContextSwitcher();
+			contextSwitcher.CloseEvent += OnClose;
+			this.DataContext = contextSwitcher.GetMainScreen();
 		}
 
-		private void Factory_CloseEvent(object sender, System.EventArgs e)
+		private void OnClose(object sender, System.EventArgs e)
 		{
 			this.Close();
 		}

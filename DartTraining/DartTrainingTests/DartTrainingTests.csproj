@@ -78,8 +78,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="ContextSwitchTests.cs" />
-    <Compile Include="MainViewModelTests.cs" />
+    <Compile Include="Login\LoginTests.cs" />
+    <Compile Include="Switcher\ContextSwitchTests.cs" />
     <Compile Include="Menu\MenuTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowGenerator.cs" />

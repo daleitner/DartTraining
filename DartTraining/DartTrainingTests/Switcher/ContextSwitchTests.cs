@@ -1,14 +1,11 @@
-﻿using System;
+﻿using ApprovalTests;
 using ApprovalTests.Reporters;
-using ApprovalTests.Wpf;
-using DartTraining;
 using DartTraining.Factory;
-using DartTraining.Menu;
 using DartTraining.Switcher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace DartTrainingTests
+namespace DartTrainingTests.Switcher
 {
 	[TestClass]
 	[UseReporter(typeof(DiffReporter), typeof(ClipboardReporter))]
@@ -21,12 +18,13 @@ namespace DartTrainingTests
 		{
 			this.factory = new Mock<IViewModelFactory>();
 		}
+
 		[TestMethod]
-		public void WhenContextSwitcherCloseApplication_ThenFactoryShouldCloseApplication()
+		public void WhenGetMainScreen_ThenContextShouldBeLoginViewModel()
 		{
-			var switcher = new ContextSwitcher(this.factory.Object);
-			switcher.CloseApplication();
-			this.factory.Verify(x => x.CloseApplication(), Times.Once, "factory did not close application");
+			var contextSwitcher = new ContextSwitcher();
+			var viewModel = contextSwitcher.GetMainScreen();
+			Approvals.Verify("Content = " + viewModel.Context);
 		}
 	}
 }

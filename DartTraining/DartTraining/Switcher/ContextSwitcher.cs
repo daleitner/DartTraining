@@ -1,25 +1,34 @@
-﻿using Base;
+﻿using System;
+using Base;
 using DartTraining.Factory;
 
 namespace DartTraining.Switcher
 {
 	public class ContextSwitcher : IContextSwitcher
 	{
-		private IViewModelFactory factory;
-
-		public ContextSwitcher(IViewModelFactory factory)
+		private readonly IViewModelFactory factory;
+		private MainViewModel viewModel;
+		public event EventHandler CloseEvent;
+		public ContextSwitcher()
 		{
-			this.factory = factory;
+			this.factory = new ViewModelFactory(this);
 		}
 
-		public ViewModelBase GetMainScreen()
+		public MainViewModel GetMainScreen()
 		{
-			return this.factory.CreateMenuViewModel();
+			this.viewModel = this.factory.CreateMainViewModel();
+			SetContext(this.factory.CreateLoginViewModel());
+			return this.viewModel;
 		}
 
 		public void CloseApplication()
 		{
-			this.factory.CloseApplication();
+			CloseEvent?.Invoke(null,null);
+		}
+
+		private void SetContext(ViewModelBase context)
+		{
+			this.viewModel.Context = context;
 		}
 	}
 }

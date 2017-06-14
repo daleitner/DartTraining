@@ -11,14 +11,6 @@ namespace DartTraining
 	public class MainViewModel : ViewModelBase
 	{
 		private ViewModelBase context;
-		private IContextSwitcher contextSwitcher;
-
-		public MainViewModel(IContextSwitcher contextSwitcher)
-		{
-			this.contextSwitcher = contextSwitcher;
-			this.Context = this.contextSwitcher.GetMainScreen();
-		}
-
 		public ViewModelBase Context
 		{
 			get { return this.context; }

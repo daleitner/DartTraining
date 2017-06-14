@@ -1,4 +1,5 @@
 ﻿using System;
+using DartTraining.Login;
 using DartTraining.Menu;
 using DartTraining.Switcher;
 
@@ -7,14 +8,14 @@ namespace DartTraining.Factory
 	public class ViewModelFactory : IViewModelFactory
 	{
 		private readonly IContextSwitcher contextSwitcher;
-		public event EventHandler CloseEvent;
-		public ViewModelFactory()
+		
+		public ViewModelFactory(IContextSwitcher contextSwitcher)
 		{
-			this.contextSwitcher = new ContextSwitcher(this);
+			this.contextSwitcher = contextSwitcher;
 		}
 		public MainViewModel CreateMainViewModel()
 		{
-			return new MainViewModel(this.contextSwitcher);
+			return new MainViewModel();
 		}
 
 		public MenuViewModel CreateMenuViewModel()
@@ -22,9 +23,9 @@ namespace DartTraining.Factory
 			return new MenuViewModel(this.contextSwitcher);
 		}
 
-		public void CloseApplication()
+		public LoginViewModel CreateLoginViewModel()
 		{
-			CloseEvent?.Invoke(null, null);
+			return new LoginViewModel(this.contextSwitcher);
 		}
 	}
 }

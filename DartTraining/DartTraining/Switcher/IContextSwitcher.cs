@@ -9,7 +9,7 @@ namespace DartTraining.Switcher
 {
 	public interface IContextSwitcher
 	{
-		ViewModelBase GetMainScreen();
+		MainViewModel GetMainScreen();
 		void CloseApplication();
 	}
 }

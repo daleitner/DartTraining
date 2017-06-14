@@ -1,4 +1,6 @@
-﻿using DartTraining.Menu;
+﻿using Base;
+using DartTraining.Login;
+using DartTraining.Menu;
 
 namespace DartTraining.Factory
 {
@@ -6,6 +8,6 @@ namespace DartTraining.Factory
 	{
 		MainViewModel CreateMainViewModel();
 		MenuViewModel CreateMenuViewModel();
-		void CloseApplication();
+		LoginViewModel CreateLoginViewModel();
 	}
 }
