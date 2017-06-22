@@ -8,5 +8,7 @@ namespace DBInterface
 {
 	public interface IDataBaseService
 	{
+		List<string> GetUsers();
+		void InsertNewUser(string name);
 	}
 }

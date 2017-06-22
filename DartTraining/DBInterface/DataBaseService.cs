@@ -8,5 +8,14 @@ namespace DBInterface
 {
 	public class DataBaseService : IDataBaseService
 	{
+		public List<string> GetUsers()
+		{
+			return new List<string>();
+		}
+
+		public void InsertNewUser(string name)
+		{
+			//TODO
+		}
 	}
 }

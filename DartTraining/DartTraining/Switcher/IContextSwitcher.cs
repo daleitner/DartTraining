@@ -11,5 +11,6 @@ namespace DartTraining.Switcher
 	{
 		MainViewModel GetMainScreen();
 		void CloseApplication();
+		void UserLoggedIn(string user, bool isNewUser);
 	}
 }

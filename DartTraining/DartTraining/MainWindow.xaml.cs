@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using DartTraining.Factory;
 using DartTraining.Switcher;
+using DBInterface;
 
 namespace DartTraining
 {
@@ -12,7 +13,8 @@ namespace DartTraining
 		public MainWindow()
 		{
 			InitializeComponent();
-			var contextSwitcher = new ContextSwitcher();
+			var dataBaseService = new DataBaseService();
+			var contextSwitcher = new ContextSwitcher(dataBaseService);
 			contextSwitcher.CloseEvent += OnClose;
 			this.DataContext = contextSwitcher.GetMainScreen();
 		}

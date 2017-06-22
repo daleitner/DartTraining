@@ -1,29 +1,43 @@
 ﻿using System;
+using System.Collections.Generic;
 using Base;
 using DartTraining.Factory;
+using DBInterface;
 
 namespace DartTraining.Switcher
 {
 	public class ContextSwitcher : IContextSwitcher
 	{
+		private readonly IDataBaseService dataBaseService;
 		private readonly IViewModelFactory factory;
-		private MainViewModel viewModel;
+		private readonly MainViewModel viewModel;
 		public event EventHandler CloseEvent;
-		public ContextSwitcher()
+		public ContextSwitcher(IDataBaseService dataBaseService)
 		{
+			this.dataBaseService = dataBaseService;
 			this.factory = new ViewModelFactory(this);
+			this.viewModel = this.factory.CreateMainViewModel();
 		}
+
+		public MainViewModel ViewModel => this.viewModel;
 
 		public MainViewModel GetMainScreen()
 		{
-			this.viewModel = this.factory.CreateMainViewModel();
-			SetContext(this.factory.CreateLoginViewModel());
+			var users = this.dataBaseService.GetUsers();
+			SetContext(this.factory.CreateLoginViewModel(users));
 			return this.viewModel;
 		}
 
 		public void CloseApplication()
 		{
 			CloseEvent?.Invoke(null,null);
+		}
+
+		public void UserLoggedIn(string user, bool isNewUser)
+		{
+			if(isNewUser)
+				this.dataBaseService.InsertNewUser(user);
+			SetContext(this.factory.CreateMenuViewModel());
 		}
 
 		private void SetContext(ViewModelBase context)

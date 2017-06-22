@@ -1,7 +1,8 @@
-﻿using ApprovalTests;
+﻿using System.Collections.Generic;
+using ApprovalTests;
 using ApprovalTests.Reporters;
-using DartTraining.Factory;
 using DartTraining.Switcher;
+using DBInterface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -11,20 +12,39 @@ namespace DartTrainingTests.Switcher
 	[UseReporter(typeof(DiffReporter), typeof(ClipboardReporter))]
 	public class ContextSwitchTests
 	{
-		private Mock<IViewModelFactory> factory;
+		private Mock<IDataBaseService> dataBaseService;
 
 		[TestInitialize]
 		public void Setup()
 		{
-			this.factory = new Mock<IViewModelFactory>();
+			this.dataBaseService = new Mock<IDataBaseService>();
 		}
 
 		[TestMethod]
 		public void WhenGetMainScreen_ThenContextShouldBeLoginViewModel()
 		{
-			var contextSwitcher = new ContextSwitcher();
-			var viewModel = contextSwitcher.GetMainScreen();
-			Approvals.Verify("Content = " + viewModel.Context);
+			this.dataBaseService.Setup(x => x.GetUsers()).Returns(new List<string>());
+			var contextSwitcher = new ContextSwitcher(this.dataBaseService.Object);
+			contextSwitcher.GetMainScreen();
+			this.dataBaseService.Verify(x => x.GetUsers(), Times.Once, "Users was not fetched from Database");
+			Approvals.Verify("Content = " + contextSwitcher.ViewModel.Context);
+		}
+
+		[TestMethod]
+		public void WhenKnownUserLoggedIn_ThenContextShouldSwitchToMenu()
+		{
+			var contextSwitcher = new ContextSwitcher(this.dataBaseService.Object);
+			contextSwitcher.UserLoggedIn("name", false);
+			Approvals.Verify("Content = " + contextSwitcher.ViewModel.Context);
+		}
+
+		[TestMethod]
+		public void WhenNewUserLoggedIn_ThenContextShouldSwitchToMenu()
+		{
+			var contextSwitcher = new ContextSwitcher(this.dataBaseService.Object);
+			contextSwitcher.UserLoggedIn("name", true);
+			this.dataBaseService.Verify(x => x.InsertNewUser("name"), Times.Once, "User was not inserted in Databae");
+			Approvals.Verify("Content = " + contextSwitcher.ViewModel.Context);
 		}
 	}
 }

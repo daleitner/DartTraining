@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Input;
 using Base;
 using DartTraining.Switcher;
@@ -18,9 +15,9 @@ namespace DartTraining.Login
 		private string newUser;
 		private readonly IContextSwitcher contextSwitcher;
 
-		public LoginViewModel(IContextSwitcher contextSwitcher)
+		public LoginViewModel(IContextSwitcher contextSwitcher, List<string> users)
 		{
-			this.users = new ObservableCollection<string>();
+			this.users = new ObservableCollection<string>(users);
 			this.contextSwitcher = contextSwitcher;
 		}
 
@@ -40,8 +37,10 @@ namespace DartTraining.Login
 			{
 				this.selectedUser = value;
 				OnPropertyChanged(nameof(this.SelectedUser));
+				UpdateNewUser();
 			}
 		}
+
 		public string NewUser
 		{
 			get { return this.newUser; }
@@ -61,12 +60,17 @@ namespace DartTraining.Login
 
 		private void Login()
 		{
-			
+			this.contextSwitcher.UserLoggedIn(this.NewUser, !this.Users.Contains(this.NewUser));
 		}
 
 		private bool CanLogin()
 		{
-			return !string.IsNullOrEmpty(this.SelectedUser) || !string.IsNullOrEmpty(this.NewUser);
+			return !string.IsNullOrEmpty(this.NewUser);
+		}
+
+		private void UpdateNewUser()
+		{
+			this.NewUser = this.SelectedUser;
 		}
 	}
 }

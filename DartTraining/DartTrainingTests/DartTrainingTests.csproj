@@ -92,6 +92,10 @@
       <Project>{C7A8CCBB-150B-4A94-82CF-DAA25D3DB22C}</Project>
       <Name>DartTraining</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DBInterface\DBInterface.csproj">
+      <Project>{764B6836-AE1D-405C-848B-ECD8C9DC6785}</Project>
+      <Name>DBInterface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

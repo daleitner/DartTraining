@@ -26,39 +26,58 @@ namespace DartTrainingTests.Login
 		[TestMethod]
 		public void LoginGuiTest()
 		{
-			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new LoginViewModel(this.contextSwitcher.Object)));
+			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new LoginViewModel(this.contextSwitcher.Object, new List<string>() {"user1", "user2", "user3"})));
 		}
 
 		[TestMethod]
-		public void WhenNewUserIsEmptyAndSelectedUserIsNull_ThenLoginButtonShouldBeDisabled()
+		public void WhenNewUserIsEmpty_ThenLoginButtonShouldBeDisabled()
 		{
-			var viewModel = new LoginViewModel(this.contextSwitcher.Object);
+			var viewModel = new LoginViewModel(this.contextSwitcher.Object, new List<string>());
 			Approvals.Verify("Button Enabled: " + viewModel.LoginCommand.CanExecute(null));
 		}
 
 		[TestMethod]
-		public void WhenNewUserIsEmptyAndSelectedUserIsSet_ThenLoginButtonShouldBeEnabled()
+		public void WhenNewUserIsSet_ThenLoginButtonShouldBeEnabled()
 		{
-			var viewModel = new LoginViewModel(this.contextSwitcher.Object);
-			viewModel.SelectedUser = "name";
-			Approvals.Verify("Button Enabled: " + viewModel.LoginCommand.CanExecute(null));
-		}
-
-		[TestMethod]
-		public void WhenNewUserIsSetAndSelectedUserIsNull_ThenLoginButtonShouldBeEnabled()
-		{
-			var viewModel = new LoginViewModel(this.contextSwitcher.Object);
+			var viewModel = new LoginViewModel(this.contextSwitcher.Object, new List<string>());
 			viewModel.NewUser = "name";
 			Approvals.Verify("Button Enabled: " + viewModel.LoginCommand.CanExecute(null));
 		}
 
 		[TestMethod]
-		public void WhenNewUserIsSetAndSelectedUserIsSet_ThenLoginButtonShouldBeEnabled()
+		public void WhenSelectedUserIsSet_ThenNewUserShouldBeSelectedUser()
 		{
-			var viewModel = new LoginViewModel(this.contextSwitcher.Object);
+			var viewModel = new LoginViewModel(this.contextSwitcher.Object, new List<string>());
 			viewModel.SelectedUser = "name";
+			Approvals.Verify("User in Textbox: " + viewModel.NewUser);
+		}
+
+		[TestMethod]
+		public void WhenSelectedUserIsSetAndNewUserIsSet_ThenNewUserShouldBeSelectedUser()
+		{
+			var viewModel = new LoginViewModel(this.contextSwitcher.Object, new List<string>());
+			viewModel.NewUser = "new User";
+			viewModel.SelectedUser = "name";
+			Approvals.Verify("User in Textbox: " + viewModel.NewUser);
+		}
+
+		[TestMethod]
+		public void WhenUserIsSetAndLoginClicked_ThenNotifyContextSwitcher()
+		{
+			var viewModel = new LoginViewModel(this.contextSwitcher.Object, new List<string>());
 			viewModel.NewUser = "name";
-			Approvals.Verify("Button Enabled: " + viewModel.LoginCommand.CanExecute(null));
+			viewModel.LoginCommand.Execute(null);
+			this.contextSwitcher.Verify(x => x.UserLoggedIn(viewModel.NewUser, true), Times.Once, "ContextSwitcher was not notified");
+		}
+
+		[TestMethod]
+		public void WhenUserIsSetFromListBoxAndLoginClicked_ThenNotifyContextSwitcher()
+		{
+			var viewModel = new LoginViewModel(this.contextSwitcher.Object, new List<string> {"user1"});
+			viewModel.NewUser = "name";
+			viewModel.SelectedUser = viewModel.Users.First();
+			viewModel.LoginCommand.Execute(null);
+			this.contextSwitcher.Verify(x => x.UserLoggedIn(viewModel.NewUser, false), Times.Once, "ContextSwitcher was not notified");
 		}
 	}
 }

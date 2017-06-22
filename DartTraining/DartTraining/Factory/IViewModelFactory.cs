@@ -1,4 +1,5 @@
-﻿using Base;
+﻿using System.Collections.Generic;
+using Base;
 using DartTraining.Login;
 using DartTraining.Menu;
 
@@ -8,6 +9,6 @@ namespace DartTraining.Factory
 	{
 		MainViewModel CreateMainViewModel();
 		MenuViewModel CreateMenuViewModel();
-		LoginViewModel CreateLoginViewModel();
+		LoginViewModel CreateLoginViewModel(List<string> users);
 	}
 }

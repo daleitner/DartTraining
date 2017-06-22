@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using DartTraining.Login;
 using DartTraining.Menu;
 using DartTraining.Switcher;
@@ -23,9 +24,9 @@ namespace DartTraining.Factory
 			return new MenuViewModel(this.contextSwitcher);
 		}
 
-		public LoginViewModel CreateLoginViewModel()
+		public LoginViewModel CreateLoginViewModel(List<string> users)
 		{
-			return new LoginViewModel(this.contextSwitcher);
+			return new LoginViewModel(this.contextSwitcher, users);
 		}
 	}
 }
