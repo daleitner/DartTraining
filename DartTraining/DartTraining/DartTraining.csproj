@@ -62,6 +62,8 @@
       <DependentUpon>LoginUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginViewModel.cs" />
+    <Compile Include="Services\DataBaseService.cs" />
+    <Compile Include="Services\IDataBaseService.cs" />
     <Compile Include="Switcher\IContextSwitcher.cs" />
     <Page Include="Login\LoginUserControl.xaml">
       <SubType>Designer</SubType>

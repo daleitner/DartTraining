@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using ApprovalTests;
 using ApprovalTests.Reporters;
+using DartTraining.Services;
 using DartTraining.Switcher;
-using DBInterface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

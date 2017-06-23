@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Base;
 using DartTraining.Factory;
-using DBInterface;
+using IDataBaseService = DartTraining.Services.IDataBaseService;
 
 namespace DartTraining.Switcher
 {

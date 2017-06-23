@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using DartTraining.Factory;
 using DartTraining.Switcher;
-using DBInterface;
+using DataBaseService = DartTraining.Services.DataBaseService;
 
 namespace DartTraining
 {

@@ -1,0 +1,8 @@
+<Database name="Darttraining">
+<Tables>
+	<Table name="Users">
+		<Column name="Pid" type="VARCHAR" primarykey="true" />
+		<Column name="Name" type="VARCHAR" />
+	</Table>
+</Tables>
+</Database>
