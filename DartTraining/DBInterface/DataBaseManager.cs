@@ -139,21 +139,23 @@ namespace DBInterface
 			var table = this.Mapping.GetTableByObject(typeof (T));
 			var entry = this.Mapping.GetEntryByTable(table.Name);
 			var columnEntry = entry.Columns.FirstOrDefault(x => x.AttributeName == "Id");
+			if(columnEntry == null)
+				throw new Exception("Mapping of Property 'Id' is missing!");
 			var query = new DataBaseQuery(table, new Condition().Add(new PropertyExpression(table.Columns[columnEntry.ColumnName], CompareEnum.Equals, id)));
 			return this.DataBaseConnection.ExecuteQuery(query).Select(x => (T)Activator.CreateInstance(typeof(T), x)).FirstOrDefault();
 		}
 
-		//public void Insert(ModelBase newModel)
-		//{
-		//	Insert(newModel, null);
-		//}
+		public void Insert(ModelBase newModel)
+		{
+			Insert(newModel, null);
+		}
 
-		//public void Insert(ModelBase newModel, ModelBase parentModel)
-		//{
-		//	var table = this.Mapping.GetTableByObject(newModel.GetType());
-		//	var dictionary = this.Mapping.CreateDatabaseDictionary(table, newModel, parentModel);
-		//	this.DataBaseConnection.InsertElement(new SQLDatabase.ElementInsert(table, dictionary));
-		//}
+		public void Insert(ModelBase newModel, ModelBase parentModel)
+		{
+			var table = this.Mapping.GetTableByObject(newModel.GetType());
+			var dictionary = this.Mapping.CreateDatabaseDictionary(table, newModel, parentModel);
+			this.DataBaseConnection.InsertElement(new SQLDatabase.ElementInsert(table, dictionary));
+		}
 
 		//public void Insert(ModelBaseTree newModelTree, ModelBase parentModel)
 		//{

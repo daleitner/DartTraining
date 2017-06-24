@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using DartTraining.Models;
 using DBInterface;
 
 namespace DartTraining.Services
 {
 	public class DataBaseService : IDataBaseService
 	{
-		private DataBaseManager dataBase;
+		private readonly DataBaseManager dataBase;
 		public DataBaseService()
 		{
 			this.dataBase = DataBaseManager.GetInstance();
@@ -13,12 +15,12 @@ namespace DartTraining.Services
 
 		public List<string> GetUsers()
 		{
-			return new List<string>();
+			return this.dataBase.GetAll<User>().Select(x => x.Name).ToList();
 		}
 
 		public void InsertNewUser(string name)
 		{
-			//TODO
+			this.dataBase.Insert(new User(name));
 		}
 	}
 }
