@@ -60,7 +60,7 @@ namespace DartTraining.Menu
 
 		private void StartGame()
 		{
-			throw new NotImplementedException();
+			this.contextSwitcher.OpenNewGame();
 		}
 
 		private void StartLiga()
