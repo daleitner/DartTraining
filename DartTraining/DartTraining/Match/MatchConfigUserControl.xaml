@@ -1,12 +1,41 @@
 ﻿<UserControl x:Class="DartTraining.Match.MatchConfigUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DartTraining.Match"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             mc:Ignorable="d"
+             d:DesignHeight = "300" d:DesignWidth="400">
+	<Grid>
+		<StackPanel Margin="0,0,0,30">
+			<Label Name="lTitle" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Einstellungen" FontSize="20" FontWeight="Bold" />
+			<StackPanel Orientation="Horizontal">
+				<Label Name="lPunkte" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Content="Punkte:" />
+				<TextBox Name="tbScores" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Width="50" Text="{Binding Path=Scores}" />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<Label Name="lSets" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,2,0,0" Content="Sets:" />
+				<TextBox Name="tbSets" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="17,2,0,0" Width="50" Text="{Binding Path=Sets}" />
+				<CheckBox IsChecked="{Binding Path=IsSetBestOf}" Content="Best Of" VerticalAlignment="Center" Margin="5,1,0,0"></CheckBox>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal">
+				<Label Name="lLegs" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Content="Legs:" />
+				<TextBox Name="tbLegs" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="14,0,0,0" Width="50" Text="{Binding Path=Legs}" />
+				<CheckBox IsChecked="{Binding Path=IsLegBestOf}" Content="Best Of" VerticalAlignment="Center" Margin="5,1,0,0"></CheckBox>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="0,30,0,0">
+				<RadioButton VerticalAlignment="Center" GroupName="Opponent" Content="Gegner:" IsChecked="{Binding Path=IsCPU}"></RadioButton>
+				<ComboBox Name="cbOpponent" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,2" Width="100" ItemsSource="{Binding Path=Opponents}" SelectedItem="{Binding Path=SelectedOpponent}" IsEnabled="{Binding Path=IsCPU}"  />
+				<Button Name="btnRandom" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="4,0,0,0" Width="30" Command="{Binding Path=RandomCommand}" Content="?" ToolTip="Zufälliger Gegner"/>
+				<Label Name="lStaerke" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" Content="Level:" IsEnabled="{Binding Path=IsCPU}" />
+				<ComboBox Name="cbLevel" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Width="100" ItemsSource="{Binding Path=Levels}" SelectedItem="{Binding Path=SelectedLevel}" IsEnabled="{Binding Path=IsCPU}"  />
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+				<RadioButton GroupName="Opponent" IsChecked="{Binding Path=IsPlayer}" VerticalAlignment="Center" Content="Spieler:"></RadioButton>
+				<TextBox Name="tbPlayer" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="12,0,0,0" Width="100" Text="{Binding Path=Player}" IsEnabled="{Binding Path=IsPlayer}" />
+			</StackPanel>
+		</StackPanel>
+		<Button Name="btnBack" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="2,0,0,2" Width="100" Command="{Binding Path=BackCommand}" Content="Zurück" />
+		<Button Name="btnStart" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,2,2" Width="100" Command="{Binding Path=StartCommand}" Content="Start" />
+	</Grid>
 </UserControl>

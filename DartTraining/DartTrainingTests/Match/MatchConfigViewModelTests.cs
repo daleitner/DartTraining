@@ -14,7 +14,7 @@ using TestBase;
 namespace DartTrainingTests.Match
 {
 	[TestClass]
-	[UseReporter(typeof(DiffReporter), typeof(ClipboardReporter))]
+	[UseReporter(typeof(DiffReporter))]
 	public class MatchConfigViewModelTests
 	{
 		private Mock<IContextSwitcher> contextSwitcher;
@@ -26,10 +26,10 @@ namespace DartTrainingTests.Match
 		}
 
 		[TestMethod]
-		[UseReporter(typeof(TortoiseImageDiffReporter))]
+		[UseReporter(typeof(TortoiseImageDiffReporter), typeof(ClipboardReporter))]
 		public void VerifyMatchConfigView()
 		{
-			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MatchConfigViewModel(this.contextSwitcher.Object), "DartTraining"));
+			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MatchConfigViewModel(new MatchConfigController(this.contextSwitcher.Object)), "DartTraining"));
 		}
 	}
 }

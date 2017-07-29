@@ -62,6 +62,8 @@
       <DependentUpon>LoginUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginViewModel.cs" />
+    <Compile Include="Match\IMatchConfigController.cs" />
+    <Compile Include="Match\MatchConfigController.cs" />
     <Compile Include="Match\MatchConfigUserControl.xaml.cs">
       <DependentUpon>MatchConfigUserControl.xaml</DependentUpon>
     </Compile>

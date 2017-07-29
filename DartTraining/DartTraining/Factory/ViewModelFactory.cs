@@ -32,7 +32,8 @@ namespace DartTraining.Factory
 
 		public MatchConfigViewModel CreateMatchConfigViewModel()
 		{
-			return new MatchConfigViewModel(this.contextSwitcher);
+			var controller = new MatchConfigController(this.contextSwitcher);
+			return new MatchConfigViewModel(controller);
 		}
 	}
 }
