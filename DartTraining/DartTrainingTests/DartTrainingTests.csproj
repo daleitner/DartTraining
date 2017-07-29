@@ -79,6 +79,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Login\LoginTests.cs" />
+    <Compile Include="Match\MatchConfigViewModelTests.cs" />
     <Compile Include="Switcher\ContextSwitchTests.cs" />
     <Compile Include="Menu\MenuTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

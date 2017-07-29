@@ -44,5 +44,10 @@ namespace DartTraining.Switcher
 		{
 			this.viewModel.Context = context;
 		}
+
+		public void OpenNewGame()
+		{
+			SetContext(this.factory.CreateMatchConfigViewModel());
+		}
 	}
 }

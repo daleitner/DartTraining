@@ -33,5 +33,14 @@ namespace DartTrainingTests.Menu
 
 			this.contextSwitcher.Verify(x => x.CloseApplication(), Times.Once, "context switcher did not close application");
 		}
+
+		[TestMethod]
+		public void WhenClickTrainingsspiel_ThenOpenNewGameShouldBeCalled()
+		{
+			var viewModel = new MenuViewModel(this.contextSwitcher.Object);
+			viewModel.StartGameCommand.Execute(null);
+
+			this.contextSwitcher.Verify(x => x.OpenNewGame(), Times.Once, "context switcher did not open new game");
+		}
 	}
 }

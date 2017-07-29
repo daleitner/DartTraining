@@ -46,5 +46,13 @@ namespace DartTrainingTests.Switcher
 			this.dataBaseService.Verify(x => x.InsertNewUser("name"), Times.Once, "User was not inserted in Databae");
 			Approvals.Verify("Content = " + contextSwitcher.ViewModel.Context);
 		}
+
+		[TestMethod]
+		public void WhenStartNewGame_ThenMatchConfigShouldOpen()
+		{
+			var contextSwitcher = new ContextSwitcher(this.dataBaseService.Object);
+			contextSwitcher.OpenNewGame();
+			Approvals.Verify("Content = " + contextSwitcher.ViewModel.Context);
+		}
 	}
 }
