@@ -5,6 +5,7 @@ using DartTraining.Menu;
 using DartTraining.Switcher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using TestBase;
 
 namespace DartTrainingTests.Menu
 {
@@ -22,7 +23,7 @@ namespace DartTrainingTests.Menu
 		[TestMethod]
 		public void MenuGuiTest()
 		{
-			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MenuViewModel(this.contextSwitcher.Object)));
+			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MenuViewModel(this.contextSwitcher.Object), "DartTraining"));
 		}
 
 		[TestMethod]

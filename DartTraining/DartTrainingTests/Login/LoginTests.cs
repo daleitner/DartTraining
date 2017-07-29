@@ -10,6 +10,7 @@ using DartTraining.Login;
 using DartTraining.Switcher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using TestBase;
 
 namespace DartTrainingTests.Login
 {
@@ -26,7 +27,7 @@ namespace DartTrainingTests.Login
 		[TestMethod]
 		public void LoginGuiTest()
 		{
-			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new LoginViewModel(this.contextSwitcher.Object, new List<string>() {"user1", "user2", "user3"})));
+			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new LoginViewModel(this.contextSwitcher.Object, new List<string>() {"user1", "user2", "user3"}), "DartTraining"));
 		}
 
 		[TestMethod]

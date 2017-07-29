@@ -9,6 +9,7 @@ using DartTraining.Match;
 using DartTraining.Switcher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using TestBase;
 
 namespace DartTrainingTests.Match
 {
@@ -25,9 +26,10 @@ namespace DartTrainingTests.Match
 		}
 
 		[TestMethod]
+		[UseReporter(typeof(TortoiseImageDiffReporter))]
 		public void VerifyMatchConfigView()
 		{
-			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MatchConfigViewModel(this.contextSwitcher.Object)));
+			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MatchConfigViewModel(this.contextSwitcher.Object), "DartTraining"));
 		}
 	}
 }
