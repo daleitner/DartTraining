@@ -15,6 +15,26 @@ namespace DartTraining.Match
 		{
 			this.contextSwitcher = contextSwitcher;
 		}
+
+		public void Back()
+		{
+			throw new NotImplementedException();
+		}
+
+		public void Start()
+		{
+			throw new NotImplementedException();
+		}
+
+		public string GetRandomOpponent()
+		{
+			throw new NotImplementedException();
+		}
+
+		public List<string> GetAllOpponents()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
 

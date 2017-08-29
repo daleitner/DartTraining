@@ -14,8 +14,8 @@ namespace DartTraining.Match
 		private int scores;
 		private int sets;
 		private int legs;
-		private List<object> opponents;
-		private object selectedOpponent;
+		private List<string> opponents;
+		private string selectedOpponent;
 		private bool isCPU;
 		private RelayCommand randomCommand;
 		private List<object> levels;
@@ -30,7 +30,7 @@ namespace DartTraining.Match
 		public MatchConfigViewModel(IMatchConfigController controller)
 		{
 			this.controller = controller;
-			this.opponents = new List<object>();
+			this.opponents = this.controller.GetAllOpponents();
 			this.levels = new List<object>();
 			SetDefaultValues();
 		}
@@ -83,7 +83,7 @@ namespace DartTraining.Match
 			}
 		}
 
-		public List<object> Opponents
+		public List<string> Opponents
 		{
 			get
 			{
@@ -96,7 +96,7 @@ namespace DartTraining.Match
 			}
 		}
 
-		public object SelectedOpponent
+		public string SelectedOpponent
 		{
 			get
 			{
@@ -220,14 +220,17 @@ namespace DartTraining.Match
 
 		private void Random()
 		{
+			this.SelectedOpponent = this.controller.GetRandomOpponent();
 		}
 
 		private void Back()
 		{
+			this.controller.Back();
 		}
 
 		private void Start()
 		{
+			this.controller.Start();
 		}
 
 	}

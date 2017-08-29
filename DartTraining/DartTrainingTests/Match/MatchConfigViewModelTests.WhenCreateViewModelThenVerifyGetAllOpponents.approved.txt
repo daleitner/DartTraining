@@ -1,0 +1,3 @@
+﻿Opponent[0] = Opponent1
+Opponent[1] = Opponent2
+Opponent[2] = Opponent3
