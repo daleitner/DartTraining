@@ -18,22 +18,21 @@ namespace DartTraining.Match
 
 		public void Back()
 		{
-			throw new NotImplementedException();
+			this.contextSwitcher.GetMainMenu();
 		}
 
 		public void Start()
 		{
-			throw new NotImplementedException();
 		}
 
 		public string GetRandomOpponent()
 		{
-			throw new NotImplementedException();
+			return string.Empty;
 		}
 
 		public List<string> GetAllOpponents()
 		{
-			throw new NotImplementedException();
+			return new List<string>();
 		}
 	}
 }

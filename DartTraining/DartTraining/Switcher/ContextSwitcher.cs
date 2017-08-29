@@ -49,5 +49,10 @@ namespace DartTraining.Switcher
 		{
 			SetContext(this.factory.CreateMatchConfigViewModel());
 		}
+
+		public void GetMainMenu()
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
