@@ -25,6 +25,15 @@
 
 	<Style TargetType="{x:Type Button}">
 		<Setter Property="Background" Value="{DynamicResource YellowBackground}"></Setter>
+		<Setter Property="Cursor" Value="Hand"></Setter>
+	</Style>
+	
+	<Style TargetType="{x:Type RadioButton}">
+		<Setter Property="Cursor" Value="Hand"></Setter>
+	</Style>
+
+	<Style TargetType="{x:Type CheckBox}">
+		<Setter Property="Cursor" Value="Hand"></Setter>
 	</Style>
 
 	<LinearGradientBrush x:Key="DefaultBackground">
