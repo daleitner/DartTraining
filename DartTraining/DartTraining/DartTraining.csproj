@@ -68,6 +68,7 @@
       <DependentUpon>MatchConfigUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Match\MatchConfigViewModel.cs" />
+    <Compile Include="Models\Opponent.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Services\DataBaseService.cs" />
     <Compile Include="Services\IDataBaseService.cs" />

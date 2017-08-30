@@ -54,5 +54,13 @@ namespace DartTrainingTests.Switcher
 			contextSwitcher.OpenNewGame();
 			Approvals.Verify("Content = " + contextSwitcher.ViewModel.Context);
 		}
+
+		[TestMethod]
+		public void WhenOpenMainMenu_ThenMainMenuShouldOpen()
+		{
+			var contextSwitcher = new ContextSwitcher(this.dataBaseService.Object);
+			contextSwitcher.OpenMainMenu();
+			Approvals.Verify("Content = " + contextSwitcher.ViewModel.Context);
+		}
 	}
 }

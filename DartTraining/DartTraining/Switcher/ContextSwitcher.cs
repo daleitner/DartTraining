@@ -15,7 +15,7 @@ namespace DartTraining.Switcher
 		public ContextSwitcher(IDataBaseService dataBaseService)
 		{
 			this.dataBaseService = dataBaseService;
-			this.factory = new ViewModelFactory(this);
+			this.factory = new ViewModelFactory(this, this.dataBaseService);
 			this.viewModel = this.factory.CreateMainViewModel();
 		}
 
@@ -50,9 +50,9 @@ namespace DartTraining.Switcher
 			SetContext(this.factory.CreateMatchConfigViewModel());
 		}
 
-		public void GetMainMenu()
+		public void OpenMainMenu()
 		{
-			throw new NotImplementedException();
+			SetContext(this.factory.CreateMenuViewModel());
 		}
 	}
 }

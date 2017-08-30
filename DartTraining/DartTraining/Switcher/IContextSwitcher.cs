@@ -13,6 +13,6 @@ namespace DartTraining.Switcher
 		void CloseApplication();
 		void UserLoggedIn(string user, bool isNewUser);
 		void OpenNewGame();
-		void GetMainMenu();
+		void OpenMainMenu();
 	}
 }

@@ -22,5 +22,10 @@ namespace DartTraining.Services
 		{
 			this.dataBase.Insert(new User(name));
 		}
+
+		public List<string> GetOpponents()
+		{
+			return this.dataBase.GetAll<Opponent>().Select(x => x.ToString()).ToList();
+		}
 	}
 }

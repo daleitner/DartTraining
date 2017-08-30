@@ -3,4 +3,9 @@
 		<Column name="Pid" attribute="Id" type="VARCHAR" />
 		<Column name="Name" attribute="Name" type="VARCHAR" />
 	</Table>
+		<Table name="Opponents" csobject="Opponent">
+		<Column name="Oid" attribute="Id" type="VARCHAR" />
+		<Column name="Name" attribute="Name" type="VARCHAR" />
+		<Column name="LastName" attribute="LastName" type="VARCHAR" />
+	</Table>
 </Mapping>

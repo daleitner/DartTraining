@@ -4,5 +4,10 @@
 		<Column name="Pid" type="VARCHAR" primarykey="true" />
 		<Column name="Name" type="VARCHAR" />
 	</Table>
+		<Table name="Opponents">
+		<Column name="Oid" type="VARCHAR" primarykey="true" />
+		<Column name="Name" type="VARCHAR" />
+		<Column name="LastName" type="VARCHAR" />
+	</Table>
 </Tables>
 </Database>

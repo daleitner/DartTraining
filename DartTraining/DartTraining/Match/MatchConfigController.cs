@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DartTraining.Services;
 using DartTraining.Switcher;
 
 namespace DartTraining.Match
@@ -10,15 +11,17 @@ namespace DartTraining.Match
 	public class MatchConfigController : IMatchConfigController
 	{
 		private readonly IContextSwitcher contextSwitcher;
+		private readonly IDataBaseService dataBaseService;
 
-		public MatchConfigController(IContextSwitcher contextSwitcher)
+		public MatchConfigController(IContextSwitcher contextSwitcher, IDataBaseService dataBase)
 		{
 			this.contextSwitcher = contextSwitcher;
+			this.dataBaseService = dataBase;
 		}
 
 		public void Back()
 		{
-			this.contextSwitcher.GetMainMenu();
+			this.contextSwitcher.OpenMainMenu();
 		}
 
 		public void Start()
@@ -32,7 +35,7 @@ namespace DartTraining.Match
 
 		public List<string> GetAllOpponents()
 		{
-			return new List<string>();
+			return this.dataBaseService.GetOpponents();
 		}
 	}
 }
