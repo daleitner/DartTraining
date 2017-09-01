@@ -18,8 +18,8 @@ namespace DartTraining.Match
 		private string selectedOpponent;
 		private bool isCPU;
 		private RelayCommand randomCommand;
-		private List<object> levels;
-		private object selectedLevel;
+		private List<int> levels;
+		private int selectedLevel;
 		private RelayCommand backCommand;
 		private RelayCommand startCommand;
 		private string player;
@@ -31,7 +31,7 @@ namespace DartTraining.Match
 		{
 			this.controller = controller;
 			this.opponents = this.controller.GetAllOpponents();
-			this.levels = new List<object>();
+			this.levels = this.controller.GetAllLevels();
 			SetDefaultValues();
 		}
 
@@ -130,7 +130,7 @@ namespace DartTraining.Match
 			}
 		}
 
-		public List<object> Levels
+		public List<int> Levels
 		{
 			get
 			{
@@ -143,7 +143,7 @@ namespace DartTraining.Match
 			}
 		}
 
-		public object SelectedLevel
+		public int SelectedLevel
 		{
 			get
 			{
@@ -168,7 +168,7 @@ namespace DartTraining.Match
 		{
 			get
 			{
-				return this.startCommand ?? (this.startCommand = new RelayCommand(param => Start()));
+				return this.startCommand ?? (this.startCommand = new RelayCommand(param => Start(), param => CanStart()));
 			}
 		}
 
@@ -220,7 +220,7 @@ namespace DartTraining.Match
 
 		private void Random()
 		{
-			this.SelectedOpponent = this.controller.GetRandomOpponent();
+			this.SelectedOpponent = this.controller.GetRandomOpponent(this.Opponents);
 		}
 
 		private void Back()
@@ -233,5 +233,10 @@ namespace DartTraining.Match
 			this.controller.Start();
 		}
 
+		private bool CanStart()
+		{
+			return (this.IsCPU && !string.IsNullOrEmpty(this.SelectedOpponent) && this.SelectedLevel > 0) ||
+			       (this.IsPlayer && !string.IsNullOrEmpty(this.Player));
+		}
 	}
 }

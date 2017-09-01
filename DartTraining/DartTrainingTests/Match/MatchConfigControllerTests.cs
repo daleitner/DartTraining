@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApprovalTests;
 using ApprovalTests.Reporters;
 using DartTraining.Match;
 using DartTraining.Services;
@@ -39,6 +40,23 @@ namespace DartTrainingTests.Match
 			var controller = new MatchConfigController(this.switcher.Object, this.dataBase.Object);
 			controller.GetAllOpponents();
 			this.dataBase.Verify(x => x.GetOpponents(), Times.Once, "Opponents was not fetched from database");
+		}
+
+		[TestMethod]
+		public void VerifyGetRandomOpponent()
+		{
+			var list = new List<string> {"player1", "player2", "player3"};
+			var controller = new MatchConfigController(this.switcher.Object, this.dataBase.Object);
+			var opponent = controller.GetRandomOpponent(list);
+			Approvals.Verify(list.Contains(opponent) ? "opponent is in list" : "opponent is not in list");
+		}
+
+		[TestMethod]
+		public void VerifyGetAllLevels()
+		{
+			var controller = new MatchConfigController(this.switcher.Object, this.dataBase.Object);
+			controller.GetAllLevels();
+			this.dataBase.Verify(x => x.GetLevels(), Times.Once, "Levels was not fetched from database");
 		}
 	}
 }

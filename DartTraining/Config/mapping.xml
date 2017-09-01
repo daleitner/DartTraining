@@ -3,9 +3,13 @@
 		<Column name="Pid" attribute="Id" type="VARCHAR" />
 		<Column name="Name" attribute="Name" type="VARCHAR" />
 	</Table>
-		<Table name="Opponents" csobject="Opponent">
+	<Table name="Opponents" csobject="Opponent">
 		<Column name="Oid" attribute="Id" type="VARCHAR" />
 		<Column name="Name" attribute="Name" type="VARCHAR" />
 		<Column name="LastName" attribute="LastName" type="VARCHAR" />
+	</Table>
+	<Table name="Difficulties" csobject="Difficulty">
+		<Column name="Did" attribute="Id" type="VARCHAR" />
+		<Column name="Level" attribute="Level" type="INTEGER" />
 	</Table>
 </Mapping>

@@ -7,5 +7,6 @@ namespace DartTraining.Services
 		List<string> GetUsers();
 		void InsertNewUser(string name);
 		List<string> GetOpponents();
+		List<int> GetLevels();
 	}
 }

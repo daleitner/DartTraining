@@ -6,8 +6,9 @@ namespace DartTraining.Match
 	{
 		void Back();
 		void Start();
-		string GetRandomOpponent();
+		string GetRandomOpponent(List<string> opponents);
 		List<string> GetAllOpponents();
+		List<int> GetAllLevels();
 	}
 }
 

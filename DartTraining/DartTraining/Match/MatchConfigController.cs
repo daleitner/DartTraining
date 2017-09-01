@@ -28,14 +28,20 @@ namespace DartTraining.Match
 		{
 		}
 
-		public string GetRandomOpponent()
+		public string GetRandomOpponent(List<string> opponents)
 		{
-			return string.Empty;
+			var rnd = new Random();
+			return opponents[rnd.Next(opponents.Count)];
 		}
 
 		public List<string> GetAllOpponents()
 		{
 			return this.dataBaseService.GetOpponents();
+		}
+
+		public List<int> GetAllLevels()
+		{
+			return this.dataBaseService.GetLevels();
 		}
 	}
 }

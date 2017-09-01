@@ -25,7 +25,7 @@ namespace DartTrainingTests.Match
 		[UseReporter(typeof(TortoiseImageDiffReporter), typeof(ClipboardReporter))]
 		public void VerifyMatchConfigView()
 		{
-			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MatchConfigViewModel(this.controller.Object), "DartTraining"));
+			WpfApprovals.Verify(WindowGenerator.GenerateWindow(new MatchConfigViewModel(this.controller.Object), 1024, 768, "DartTraining"));
 		}
 
 		[TestMethod]
@@ -38,11 +38,46 @@ namespace DartTrainingTests.Match
 		}
 
 		[TestMethod]
+		public void WhenCreateViewModelThenVerifyGetAllLevels()
+		{
+			this.controller.Setup(x => x.GetAllLevels()).Returns(new List<int> { 1, 2, 3 });
+			var viewModel = new MatchConfigViewModel(this.controller.Object);
+			this.controller.Verify(x => x.GetAllLevels(), Times.Once, "GetAllLevels was not called");
+			Approvals.VerifyAll(viewModel.Levels, "Level");
+		}
+
+		[TestMethod]
+		public void WhenCreateViewModelThenVerifyCanStart()
+		{
+			var viewModel = new MatchConfigViewModel(this.controller.Object);
+			Approvals.Verify("Start Button enabled = " + viewModel.StartCommand.CanExecute(null));
+		}
+
+		[TestMethod]
 		public void WhenUserClickedBackThenVerifyBack()
 		{
 			var viewModel = new MatchConfigViewModel(this.controller.Object);
 			viewModel.BackCommand.Execute(null);
 			this.controller.Verify(x => x.Back(), Times.Once, "Back was not called");
+		}
+
+		[TestMethod]
+		public void WhenCPUOpponentIsSelectedThenVerifyCanStart()
+		{
+			var viewModel = new MatchConfigViewModel(this.controller.Object);
+			viewModel.SelectedOpponent = "Opponent1";
+			viewModel.SelectedLevel = 1;
+			Approvals.Verify("Start Button enabled = " + viewModel.StartCommand.CanExecute(null));
+		}
+
+		[TestMethod]
+		public void WhenHumanOpponentIsSelectedThenVerifyCanStart()
+		{
+			var viewModel = new MatchConfigViewModel(this.controller.Object);
+			viewModel.IsPlayer = true;
+			viewModel.IsCPU = false;
+			viewModel.Player = "player";
+			Approvals.Verify("Start Button enabled = " + viewModel.StartCommand.CanExecute(null));
 		}
 
 		[TestMethod]
@@ -56,10 +91,10 @@ namespace DartTrainingTests.Match
 		[TestMethod]
 		public void WhenUserClickedRandomThenRandomOpponentShouldBeChosen()
 		{
-			this.controller.Setup(x => x.GetRandomOpponent()).Returns("RandomOpponent");
+			this.controller.Setup(x => x.GetRandomOpponent(It.IsAny<List<string>>())).Returns("RandomOpponent");
 			var viewModel = new MatchConfigViewModel(this.controller.Object);
 			viewModel.RandomCommand.Execute(null);
-			this.controller.Verify(x => x.GetRandomOpponent(), Times.Once, "GetRandomOpponent was not called");
+			this.controller.Verify(x => x.GetRandomOpponent(viewModel.Opponents), Times.Once, "GetRandomOpponent was not called");
 			Approvals.Verify("SelectedOpponent = " + viewModel.SelectedOpponent);
 		}
 	}

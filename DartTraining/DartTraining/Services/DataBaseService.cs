@@ -27,5 +27,10 @@ namespace DartTraining.Services
 		{
 			return this.dataBase.GetAll<Opponent>().Select(x => x.ToString()).ToList();
 		}
+
+		public List<int> GetLevels()
+		{
+			return this.dataBase.GetAll<Difficulty>().Select(x => x.Level).ToList();
+		}
 	}
 }
