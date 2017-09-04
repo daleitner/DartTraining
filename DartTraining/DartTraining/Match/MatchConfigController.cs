@@ -24,8 +24,9 @@ namespace DartTraining.Match
 			this.contextSwitcher.OpenMainMenu();
 		}
 
-		public void Start()
+		public void Start(MatchConfig config)
 		{
+			this.contextSwitcher.StartMatch(config);
 		}
 
 		public string GetRandomOpponent(List<string> opponents)

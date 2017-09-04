@@ -58,5 +58,14 @@ namespace DartTrainingTests.Match
 			controller.GetAllLevels();
 			this.dataBase.Verify(x => x.GetLevels(), Times.Once, "Levels was not fetched from database");
 		}
+
+		[TestMethod]
+		public void VerifyStart()
+		{
+			var matchConfig = new MatchConfig(501, 1, false, 3, true, "opponent", true, 0);
+			var controller = new MatchConfigController(this.switcher.Object, this.dataBase.Object);
+			controller.Start(matchConfig);
+			this.switcher.Verify(x => x.StartMatch(matchConfig), Times.Once, "StartMatch was not called");
+		}
 	}
 }

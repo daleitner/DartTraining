@@ -85,7 +85,7 @@ namespace DartTrainingTests.Match
 		{
 			var viewModel = new MatchConfigViewModel(this.controller.Object);
 			viewModel.StartCommand.Execute(null);
-			this.controller.Verify(x => x.Start(), Times.Once, "Start was not called");
+			this.controller.Verify(x => x.Start(It.IsAny<MatchConfig>()), Times.Once, "Start was not called");
 		}
 
 		[TestMethod]
@@ -96,6 +96,14 @@ namespace DartTrainingTests.Match
 			viewModel.RandomCommand.Execute(null);
 			this.controller.Verify(x => x.GetRandomOpponent(viewModel.Opponents), Times.Once, "GetRandomOpponent was not called");
 			Approvals.Verify("SelectedOpponent = " + viewModel.SelectedOpponent);
+		}
+
+		[TestMethod]
+		public void VerifyGetMatchConfig()
+		{
+			var viewModel = new MatchConfigViewModel(this.controller.Object);
+			var config = viewModel.GetMatchConfig();
+			Approvals.Verify(config.ToString());
 		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Base;
 using DartTraining.Factory;
+using DartTraining.Match;
 using IDataBaseService = DartTraining.Services.IDataBaseService;
 
 namespace DartTraining.Switcher
@@ -53,6 +54,11 @@ namespace DartTraining.Switcher
 		public void OpenMainMenu()
 		{
 			SetContext(this.factory.CreateMenuViewModel());
+		}
+
+		public void StartMatch(MatchConfig matchConfig)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

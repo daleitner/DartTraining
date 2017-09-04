@@ -230,13 +230,18 @@ namespace DartTraining.Match
 
 		private void Start()
 		{
-			this.controller.Start();
+			this.controller.Start(GetMatchConfig());
 		}
 
 		private bool CanStart()
 		{
 			return (this.IsCPU && !string.IsNullOrEmpty(this.SelectedOpponent) && this.SelectedLevel > 0) ||
 			       (this.IsPlayer && !string.IsNullOrEmpty(this.Player));
+		}
+
+		public MatchConfig GetMatchConfig()
+		{
+			return new MatchConfig(this.Scores, this.Sets, this.IsSetBestOf, this.Legs, this.IsLegBestOf, this.IsPlayer ? this.Player : this.SelectedOpponent, this.IsPlayer, this.IsPlayer ? 0 : this.SelectedLevel);
 		}
 	}
 }

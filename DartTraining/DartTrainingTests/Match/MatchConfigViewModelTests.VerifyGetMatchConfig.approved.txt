@@ -1,0 +1,8 @@
+﻿Points: 501
+Sets: 1
+Legs: 5
+BestOfSets: False
+BestOfLegs: True
+Opponent: 
+IsPlayer: False
+Level: 0
