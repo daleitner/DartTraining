@@ -94,9 +94,9 @@ namespace DBInterface
 				var column = table.Columns[col.ColumnName];
 				object objectValue = null;
 				if (col.AttributeName == "Id")
-					objectValue = model.GetId();
+					objectValue = model.Id;
 				else if (col.AttributeName == "ParentId")
-					objectValue = parentModel.GetId();
+					objectValue = parentModel.Id;
 				else
 				{
 					if (column.Type == ColumnType.VARCHAR && model.GetType().GetProperty(col.AttributeName).PropertyType != typeof(string))
@@ -107,7 +107,7 @@ namespace DBInterface
 						{
 							var help = model.GetType().GetProperty(col.AttributeName).GetValue(model) as ModelBase;
 							if (help != null)
-								objectValue = help.GetId();
+								objectValue = help.Id;
 							else
 								throw new NotSupportedException("Attribut <" + col.AttributeName + "> ist kein gültiger Datentyp!");
 						}
