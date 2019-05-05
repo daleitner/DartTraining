@@ -10,7 +10,7 @@
 		<Label Content="Dart Training" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10"></Label>
 		<Label Content="Login" FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,80,10,10"></Label>
 		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-			<Label x:Name="label" FontSize="20" Content="Name:" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+			<Label x:Name="label" Content="Name:" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 			<TextBox FontSize="20" x:Name="textBox" HorizontalAlignment="Center" Margin="0,4,0,0" VerticalAlignment="Top" Width="120" Text="{Binding Path=NewUser, UpdateSourceTrigger=PropertyChanged}">
 				<TextBox.InputBindings>
 					<KeyBinding Key="Enter" Command="{Binding Path=LoginCommand}"></KeyBinding>

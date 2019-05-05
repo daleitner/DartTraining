@@ -15,6 +15,9 @@
 		</Style.Triggers>
 	</Style>
 	
+	<Style TargetType="{x:Type Label}">
+		<Setter Property="FontSize" Value="20"></Setter>
+	</Style>
 	<Style TargetType="{x:Type TextBox}">
 		<Setter Property="Background" Value="{DynamicResource GrayBackground}"></Setter>
 	</Style>

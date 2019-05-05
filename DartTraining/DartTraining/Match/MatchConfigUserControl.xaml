@@ -10,16 +10,16 @@
 		<StackPanel Margin="0,0,0,100" MaxWidth="600">
 			<Label Name="lTitle" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Einstellungen" FontSize="28" FontWeight="Bold" />
 			<StackPanel Orientation="Horizontal" Margin="0,100,0,0">
-				<Label Name="lPunkte" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Content="Punkte:" FontSize="20" />
+				<Label Name="lPunkte" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Content="Punkte:" />
 				<TextBox Name="tbScores" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Width="50" Text="{Binding Path=Scores}" FontSize="20" />
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-				<Label Name="lSets" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,2,0,0" Content="Sets:" FontSize="20" />
+				<Label Name="lSets" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,2,0,0" Content="Sets:" />
 				<TextBox Name="tbSets" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,2,0,0" Width="50" Text="{Binding Path=Sets}" FontSize="20" />
 				<CheckBox IsChecked="{Binding Path=IsSetBestOf}" Content="Best Of" VerticalAlignment="Center" Margin="10,1,0,0" FontSize="20"></CheckBox>
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
-				<Label Name="lLegs" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Content="Legs:" FontSize="20" />
+				<Label Name="lLegs" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Content="Legs:" />
 				<TextBox Name="tbLegs" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="27,0,0,0" Width="50" Text="{Binding Path=Legs}" FontSize="20" />
 				<CheckBox IsChecked="{Binding Path=IsLegBestOf}" Content="Best Of" VerticalAlignment="Center" Margin="10,1,0,0" FontSize="20"></CheckBox>
 			</StackPanel>
@@ -27,7 +27,7 @@
 				<RadioButton VerticalAlignment="Center" GroupName="Opponent" Content="Gegner:" IsChecked="{Binding Path=IsCPU}" FontSize="20" HorizontalAlignment="Center"></RadioButton>
 				<ComboBox Name="cbOpponent" VerticalAlignment="Center" Margin="10,2,0,2" Width="200" HorizontalContentAlignment="Center" ItemsSource="{Binding Path=Opponents}" SelectedItem="{Binding Path=SelectedOpponent}" IsEnabled="{Binding Path=IsCPU}" FontSize="20"  />
 				<Button Name="btnRandom" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4,0,0,0" Height="50" Width="70" Command="{Binding Path=RandomCommand}" Content="?" ToolTip="Zufälliger Gegner" FontSize="20"/>
-				<Label Name="lStaerke" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" Content="Level:" IsEnabled="{Binding Path=IsCPU}" FontSize="20" />
+				<Label Name="lStaerke" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,0,0,0" Content="Level:" IsEnabled="{Binding Path=IsCPU}" />
 				<ComboBox Name="cbLevel" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0,0,0" Width="100" ItemsSource="{Binding Path=Levels}" SelectedItem="{Binding Path=SelectedLevel}" IsEnabled="{Binding Path=IsCPU}" FontSize="20" />
 			</StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,20,0,0">
