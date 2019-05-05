@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="DartTraining.Match.StatisticView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DartTraining.Match"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="180">
+	<StackPanel>
+		<Label Content="{Binding Name}" HorizontalAlignment="Center" FontSize="28"></Label>
+		<Grid>
+			<Label Content="Sets:" Margin="10,0,0,0"></Label>
+			<Label Content="{Binding Sets}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+		<Grid>
+			<Label Content="Legs:" Margin="10,0,0,0"></Label>
+			<Label Content="{Binding Legs}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+		<Grid Visibility="{Binding ShowStatisticsVisibility}">
+			<Label Content="100+:" Margin="10,0,0,0"></Label>
+			<Label Content="{Binding Hundrets}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+		<Grid Visibility="{Binding ShowStatisticsVisibility}">
+			<Label Content="140+:" Margin="10,0,0,0"></Label>
+			<Label Content="{Binding HundretFourties}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+		<Grid Visibility="{Binding ShowStatisticsVisibility}">
+			<Label Content="170+:" Margin="10,0,0,0"></Label>
+			<Label Content="{Binding HundretSeventies}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+		<Grid Visibility="{Binding ShowStatisticsVisibility}">
+			<Label Content="Score:" Margin="10,0,0,0"></Label>
+			<Label Content="{Binding Average}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+		<Grid Visibility="{Binding ShowStatisticsVisibility}">
+			<Label Content="Check:" Margin="10,0,0,0"></Label>
+			<Label Content="{Binding DoubleQuote}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+		<Grid Visibility="{Binding ShowStatisticsVisibility}">
+			<Label Content="{Binding Doubles}" Margin="0,0,10,0" HorizontalAlignment="Right"></Label>
+		</Grid>
+	</StackPanel>
+</UserControl>

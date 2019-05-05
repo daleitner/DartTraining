@@ -69,6 +69,14 @@
       <DependentUpon>MatchConfigUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Match\MatchConfigViewModel.cs" />
+    <Compile Include="Match\MatchView.xaml.cs">
+      <DependentUpon>MatchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Match\MatchViewModel.cs" />
+    <Compile Include="Match\StatisticView.xaml.cs">
+      <DependentUpon>StatisticView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Match\StatisticViewModel.cs" />
     <Compile Include="Services\DataBaseService.cs" />
     <Compile Include="Services\IDataBaseService.cs" />
     <Compile Include="Switcher\IContextSwitcher.cs" />
@@ -93,6 +101,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Match\MatchConfigUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Match\MatchView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Match\StatisticView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

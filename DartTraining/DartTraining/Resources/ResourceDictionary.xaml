@@ -12,4 +12,10 @@
 	<DataTemplate DataType="{x:Type match:MatchConfigViewModel}">
 		<match:MatchConfigUserControl></match:MatchConfigUserControl>
 	</DataTemplate>
+	<DataTemplate DataType="{x:Type match:StatisticViewModel}">
+		<match:StatisticView></match:StatisticView>
+	</DataTemplate>
+	<DataTemplate DataType="{x:Type match:MatchViewModel}">
+		<match:MatchView></match:MatchView>
+	</DataTemplate>
 </ResourceDictionary>
